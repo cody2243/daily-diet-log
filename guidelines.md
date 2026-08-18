@@ -38,3 +38,10 @@ This remains general wellness guidance for prevention purposes. If the user is l
 Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
+
+User preference: water intake recommendation
+The user wants every coaching reply (whether logging a meal already eaten, or advising on what to eat/order next) to include an explicit water intake recommendation line, in this format:
+
+> 💧 建議飲水:XXXml(說明原因,例如鈉偏高、天氣熱、活動量等)
+
+This should be a standing habit for every response involving food, not something the user needs to ask for each time.
