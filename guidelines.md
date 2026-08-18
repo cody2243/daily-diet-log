@@ -22,6 +22,8 @@ User baseline
 
 This diet log is for a healthy adult aged 30-35 with normal kidney, metabolic, and general health check-up results (no diagnosed chronic conditions). Coaching should stay at a general prevention level, not clinical management.
 
+Physical stats: height 167cm, weight 65kg. Activity level: light activity (occasional walking, light housework).
+
 General chronic-disease prevention notes (kidney disease, diabetes, and other common conditions in Taiwan)
 
 For this age/health baseline, coaching should additionally emphasize:
@@ -45,3 +47,23 @@ The user wants every coaching reply (whether logging a meal already eaten, or ad
 > 💧 建議飲水:XXXml(說明原因,例如鈉偏高、天氣熱、活動量等)
 
 This should be a standing habit for every response involving food, not something the user needs to ask for each time.
+
+Water intake calculation formula (user-specific)
+The user wants the water recommendation to be calculated from their stats and daily conditions, not an arbitrary number. Use this formula:
+
+1. Baseline: body weight (kg) x 30-35ml/day.
+   - User weight: 65kg -> baseline range 1950-2275ml/day.
+2. Activity level adjustment (added to baseline):
+   - Sedentary: +0ml
+   - Light activity (occasional walking, light housework): +100-200ml
+   - Moderate activity (regular exercise several times/week): +300-500ml
+   - High activity (frequent exercise or physically demanding work, frequent sweating): +500-800ml
+   - User's current activity level: light activity -> +150ml
+   - User's current daily baseline: approx. 2100-2300ml (this is the "normal day" target before any daily adjustments below)
+3. Daily/situational adjustments (added on top of the daily baseline, applied per meal or per day as relevant):
+   - High sodium intake that day/meal: +300-500ml
+   - Hot weather or noticeable sweating: +300-500ml
+   - Moderate-to-high intensity exercise: +350-500ml per 30 minutes
+   - Caffeine or alcohol intake: +100-200ml per serving (diuretic effect)
+4. When giving the 💧 water recommendation line in a reply, briefly note which factors were added (e.g., sodium high today, so baseline + sodium adjustment).
+5. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
