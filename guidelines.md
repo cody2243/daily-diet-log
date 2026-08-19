@@ -62,6 +62,8 @@ Per-meal calculation:
 5. If the user separately wants to know their full-day water target, that is a different question and should be answered separately (using the daily baseline + activity level formula below) rather than folded into the per-meal row.
 6. This should be a standing habit for every response involving food (whether logging a meal already eaten, or advising on what to eat/order next), not something the user needs to ask for each time.
 
+IMPORTANT — the three fixed per-meal baselines (3 x 300-500ml = 900-1500ml) do NOT add up to the full daily target (2100-2300ml/day). This is expected and by design: the per-meal amount only covers water specifically tied to eating occasions (digestion, offsetting sodium/caffeine in that meal). There is a remaining gap (roughly 600-1400ml, more if situational adjustments like sodium/caffeine/heat/exercise apply) that is meant to be sipped between meals throughout the day (on waking, mid-morning, afternoon, evening/before bed) as ordinary daily hydration — not concentrated around meals. If the user asks whether they're drinking enough for the whole day, or asks about their daily total, explain both pieces together (per-meal amounts + the between-meal gap that still needs to be covered) rather than implying the three meals alone cover the daily target.
+
 Daily water target formula (for reference only — use ONLY if the user asks about their full-day total; do not put this into the per-meal table row per the rule above)
 1. Baseline: body weight (kg) x 30-35ml/day.
    - User weight: 65kg -> baseline range 1950-2275ml/day.
