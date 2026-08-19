@@ -41,20 +41,22 @@ Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
 
-User preference: water intake recommendation (table format)
-The user wants water guidance shown directly inside the meal table itself, as an extra row, rather than only as a separate line below the table. Use this table row format:
+User preference: water intake recommendation (merged cumulative format)
+IMPORTANT — this format replaced an earlier "incremental extra" version that confused the user (they thought "+150ml" and "+300ml" meant the whole day's water target was only ~450-700ml, when those were meant to be add-ons to a separate daily baseline). Do not go back to showing only an incremental "+XXXml" number in isolation — it reads as "this is the total for this meal" and undercounts badly.
 
-| 💧 此餐建議額外補水 | +XXX-XXXml(說明原因,例如咖啡因、鈉偏高等) | — |
+Show ONE water line per meal/drink logged, as a table row, using the CUMULATIVE recommended full-day water target as of that meal (i.e., baseline + all situational adjustments known so far that day, added together into one total range) — not just the incremental extra amount on its own.
 
-This row goes as the last row of the meal table (after the Total row). It represents the EXTRA water recommended because of this specific meal/drink (e.g., caffeine diuretic effect, high sodium), not the full daily total — this distinction should be made clear so the user does not mistake it for "drink this much right now."
+Format (table row, last row of the meal table):
+| 💧 建議飲水(累計到此餐) | XXXX-XXXXml(基礎XXXX-XXXXml + 列出目前為止的調整項目與原因) | — |
 
-In addition, after the table (as part of the note or right below it), include a running daily cumulative total using this format:
+Example: after breakfast (caffeine) and lunch (high sodium) both logged same day:
+| 💧 建議飲水(累計到此餐) | 2550-3000ml(基礎2100-2300ml + 早餐咖啡因+150-200ml + 午餐鈉偏高+300-500ml) | — |
 
-> 📊 今日累積建議飲水總量:约XXXX-XXXXml(說明構成,例如全天基礎量 + 目前為止的調整項目)
-
-This should reflect the full-day target accumulated so far (baseline + activity + any adjustments logged so far that day), separate from the per-meal extra-water row. Both lines/rows should appear together whenever a meal or drink is logged, or when advising on what to eat/order next.
-
-This should be a standing habit for every response involving food, not something the user needs to ask for each time.
+Notes on how to present this:
+- This is the running FULL-DAY target updated with everything known so far, not a literal "you must have already drunk this exact amount by this exact clock time" pacing requirement — if helpful, the note text below the table can briefly clarify this is the target to work toward across the rest of the day, not retroactive.
+- Do not add a separate second line/row with just the incremental adjustment by itself — that was the source of the earlier confusion. One merged cumulative number only.
+- Always briefly list which adjustment factors are included, in parentheses, so the user can see the composition (e.g., "+ 早餐咖啡因+150-200ml + 午餐鈉偏高+300-500ml").
+- This should be a standing habit for every response involving food (whether logging a meal already eaten, or advising on what to eat/order next), not something the user needs to ask for each time.
 
 Water intake calculation formula (user-specific)
 The user wants the water recommendation to be calculated from their stats and daily conditions, not an arbitrary number. Use this formula:
@@ -67,12 +69,11 @@ The user wants the water recommendation to be calculated from their stats and da
    - Moderate activity (regular exercise several times/week): +300-500ml
    - High activity (frequent exercise or physically demanding work, frequent sweating): +500-800ml
    - User's current activity level: light activity -> +150ml
-   - User's current daily baseline: approx. 2100-2300ml (this is the "normal day" target before any daily adjustments below)
-3. Daily/situational adjustments (added on top of the daily baseline, applied per meal or per day as relevant):
+   - User's current daily baseline (weight + activity combined): approx. 2100-2300ml. This is a FULL-DAY quantity, not a per-meal amount — it should never be presented as something to reach "by breakfast" or "by lunch."
+3. Daily/situational adjustments (added on top of the daily baseline, applied per meal or per day as relevant, and accumulated as the day goes on):
    - High sodium intake that day/meal: +300-500ml
    - Hot weather or noticeable sweating: +300-500ml
    - Moderate-to-high intensity exercise: +350-500ml per 30 minutes
    - Caffeine or alcohol intake: +100-200ml per serving (diuretic effect)
-4. Per-meal extra-water row (💧): only include the incremental adjustment(s) triggered by that specific meal/drink (e.g., just the caffeine or sodium adjustment for that item), not the full daily baseline.
-5. Daily cumulative total (📊): baseline + activity adjustment + sum of all situational adjustments logged so far that day. Update this running total each time a new meal/drink is logged.
-6. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
+4. Cumulative full-day target (💧, shown in the meal table): daily baseline (2100-2300ml) + sum of ALL situational adjustments logged so far that day. Recalculate and restate this full merged number every time a new meal/drink is logged — never show an adjustment in isolation without the baseline folded in.
+5. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
