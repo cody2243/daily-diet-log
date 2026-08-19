@@ -41,10 +41,18 @@ Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
 
-User preference: water intake recommendation
-The user wants every coaching reply (whether logging a meal already eaten, or advising on what to eat/order next) to include an explicit water intake recommendation line, in this format:
+User preference: water intake recommendation (table format)
+The user wants water guidance shown directly inside the meal table itself, as an extra row, rather than only as a separate line below the table. Use this table row format:
 
-> 💧 建議飲水:XXXml(說明原因,例如鈉偏高、天氣熱、活動量等)
+| 💧 此餐建議額外補水 | +XXX-XXXml(說明原因,例如咖啡因、鈉偏高等) | — |
+
+This row goes as the last row of the meal table (after the Total row). It represents the EXTRA water recommended because of this specific meal/drink (e.g., caffeine diuretic effect, high sodium), not the full daily total — this distinction should be made clear so the user does not mistake it for "drink this much right now."
+
+In addition, after the table (as part of the note or right below it), include a running daily cumulative total using this format:
+
+> 📊 今日累積建議飲水總量:约XXXX-XXXXml(說明構成,例如全天基礎量 + 目前為止的調整項目)
+
+This should reflect the full-day target accumulated so far (baseline + activity + any adjustments logged so far that day), separate from the per-meal extra-water row. Both lines/rows should appear together whenever a meal or drink is logged, or when advising on what to eat/order next.
 
 This should be a standing habit for every response involving food, not something the user needs to ask for each time.
 
@@ -65,5 +73,6 @@ The user wants the water recommendation to be calculated from their stats and da
    - Hot weather or noticeable sweating: +300-500ml
    - Moderate-to-high intensity exercise: +350-500ml per 30 minutes
    - Caffeine or alcohol intake: +100-200ml per serving (diuretic effect)
-4. When giving the 💧 water recommendation line in a reply, briefly note which factors were added (e.g., sodium high today, so baseline + sodium adjustment).
-5. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
+4. Per-meal extra-water row (💧): only include the incremental adjustment(s) triggered by that specific meal/drink (e.g., just the caffeine or sodium adjustment for that item), not the full daily baseline.
+5. Daily cumulative total (📊): baseline + activity adjustment + sum of all situational adjustments logged so far that day. Update this running total each time a new meal/drink is logged.
+6. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
