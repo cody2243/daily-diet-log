@@ -41,30 +41,30 @@ Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
 
-User preference: water intake recommendation (PER-MEAL amount, confirmed format)
-IMPORTANT — this is the third and confirmed iteration of this format. Earlier versions failed:
-  v1: showed only an incremental "+XXXml" number per meal in isolation -> user thought that was the whole day's water target (way too low).
-  v2: showed a cumulative running full-day total per meal (baseline + adjustments-so-far) -> user clarified they don't want a daily running total at all; they want to know how much water to drink specifically WITH/FOR that one meal.
-  v3 (current, confirmed with user via explicit question): each meal gets its own fixed per-meal baseline PLUS that meal's own specific situational adjustment. Do not sum across meals and do not fold in the full-day baseline (2100-2300ml/day) into this row — that daily figure is a separate concept and should not appear in the per-meal water row at all.
+User preference: water intake recommendation (PER-MEAL amount, confirmed format v4)
+This format has been revised multiple times based on user feedback. History, for context (do not reintroduce earlier versions):
+  v1: incremental "+XXXml" shown alone per meal -> user thought that was the whole day's target (too low). Rejected.
+  v2: cumulative running full-day total shown per meal -> user didn't want a daily running total in the per-meal row. Rejected.
+  v3: fixed standalone per-meal baseline (300-500ml, same for every meal, unrelated to daily total) + that meal's situational adjustment -> user initially confirmed this, but then said the three meals' baselines SHOULD sum to the daily target, which v3 does not do. Rejected/superseded.
+  v4 (CURRENT, confirmed with user via explicit question): the daily baseline (2100-2300ml/day) is split evenly across 3 meals (~700-770ml each), and then that meal's own situational adjustment is added on top. With this version, the three meals' baseline portions DO sum to the full daily baseline by design.
 
 Format (table row, last row of the meal table):
-| 💧 這餐建議飲水 | XXX-XXXml(固定基礎XXX-XXXml + 這餐特殊因素:原因與加量) | — |
+| 💧 這餐建議飲水 | XXX-XXXml(每餐基礎700-770ml + 這餐特殊因素:原因與加量) | — |
 
-Per-meal calculation:
-1. Fixed per-meal baseline: 300-500ml (a standalone typical amount to drink with any regular meal — this is NOT a slice of the daily total, it's a fixed per-occasion figure).
-2. Add this meal's own situational adjustment(s), using the existing factor increments below, only for factors that apply to THIS specific meal/drink:
+Per-meal calculation (v4, current):
+1. Per-meal baseline = daily baseline (2100-2300ml) ÷ 3 meals ≈ 700-770ml per meal. This is the same for breakfast, lunch, and dinner (even split; snacks between meals do not get their own share of this baseline — only the 3 main meals do).
+2. Add this meal's own situational adjustment(s), only for factors that apply to THIS specific meal/drink:
    - High sodium in this meal: +300-500ml
    - Caffeine or alcohol in this meal/drink: +100-200ml per serving
    - Hot weather / noticeable sweating around this meal: +300-500ml
    - Moderate-to-high intensity exercise around this meal: +350-500ml per 30 minutes
-3. Result = fixed baseline (300-500ml) + applicable situational adjustment(s) for that meal only. Example: a high-sodium lunch = 300-500ml baseline + 300-500ml sodium adjustment = 600-1000ml recommended for that lunch.
-4. Do NOT reference the full daily target (2100-2300ml/day baseline) in this per-meal row, and do NOT accumulate previous meals' adjustments into this number — each meal's water row is self-contained and only about that meal.
-5. If the user separately wants to know their full-day water target, that is a different question and should be answered separately (using the daily baseline + activity level formula below) rather than folded into the per-meal row.
-6. This should be a standing habit for every response involving food (whether logging a meal already eaten, or advising on what to eat/order next), not something the user needs to ask for each time.
+3. Result = per-meal baseline (700-770ml) + applicable situational adjustment(s) for that meal only. Example: a high-sodium lunch = 700-770ml baseline + 300-500ml sodium adjustment = 1000-1270ml recommended for that lunch.
+4. Do NOT accumulate previous meals' adjustments into this number — each meal's water row is self-contained (its own 1/3 baseline share + its own situational adjustments only), not a running total across the day.
+5. Because the per-meal baseline is now an even 3-way split of the daily total, the three meals' baseline portions (700-770ml x 3 ≈ 2100-2300ml) do sum to the daily baseline. Situational adjustments (sodium, caffeine, heat, exercise) are on top of that and are meal-specific extras, not part of the baseline split.
+6. If the user asks for their full-day water target directly, answer using the daily baseline + activity level formula below (which is the same 2100-2300ml figure the per-meal baselines are split from) — optionally also mention that situational adjustments from meals/snacks add further on top of that daily figure.
+7. This should be a standing habit for every response involving food (whether logging a meal already eaten, or advising on what to eat/order next), not something the user needs to ask for each time.
 
-IMPORTANT — the three fixed per-meal baselines (3 x 300-500ml = 900-1500ml) do NOT add up to the full daily target (2100-2300ml/day). This is expected and by design: the per-meal amount only covers water specifically tied to eating occasions (digestion, offsetting sodium/caffeine in that meal). There is a remaining gap (roughly 600-1400ml, more if situational adjustments like sodium/caffeine/heat/exercise apply) that is meant to be sipped between meals throughout the day (on waking, mid-morning, afternoon, evening/before bed) as ordinary daily hydration — not concentrated around meals. If the user asks whether they're drinking enough for the whole day, or asks about their daily total, explain both pieces together (per-meal amounts + the between-meal gap that still needs to be covered) rather than implying the three meals alone cover the daily target.
-
-Daily water target formula (for reference only — use ONLY if the user asks about their full-day total; do not put this into the per-meal table row per the rule above)
+Daily water target formula (source for the 700-770ml/meal split above; also usable directly if the user asks about their full-day total)
 1. Baseline: body weight (kg) x 30-35ml/day.
    - User weight: 65kg -> baseline range 1950-2275ml/day.
 2. Activity level adjustment (added to baseline):
@@ -73,5 +73,5 @@ Daily water target formula (for reference only — use ONLY if the user asks abo
    - Moderate activity (regular exercise several times/week): +300-500ml
    - High activity (frequent exercise or physically demanding work, frequent sweating): +500-800ml
    - User's current activity level: light activity -> +150ml
-   - User's current daily baseline (weight + activity combined): approx. 2100-2300ml/day.
+   - User's current daily baseline (weight + activity combined): approx. 2100-2300ml/day. Divided evenly across 3 meals: approx. 700-770ml per meal (used as the per-meal baseline above).
 3. This is a general wellness estimation method, not a precise medical prescription — actual needs vary by individual (kidney function, cardiovascular status, medications, etc.). If the user's height/weight/activity level changes, or they get diagnosed with a condition, ask them to update this section and treat medical changes per the "User baseline" notes above.
