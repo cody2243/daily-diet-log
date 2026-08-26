@@ -41,6 +41,17 @@ Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
 
+User preference: dynamic per-meal planning using today's cumulative log (confirmed with user via explicit question, 2026-08-26)
+The user does not want a fixed multi-day menu prepared in advance. Instead, they explicitly asked for real-time, meal-by-meal coaching: whenever they say what they are eating or about to eat, the assistant should factor in what has ALREADY been logged earlier that same day before responding.
+
+How to apply this:
+- Before responding to a new meal (whether the user is reporting something already eaten, or asking what to eat/order next), check today's log file for the meals already recorded that day (calories, protein, sodium, sugar, etc. so far).
+- Use that running context to shape advice for the current meal — e.g., if earlier meals were already high sodium, actively steer the current meal toward a lower-sodium option or flag it clearly per the "proactive sodium coaching" preference below; if protein has been low so far today, suggest adding a protein source to this meal; if vegetables/fiber have been thin, suggest a vegetable side for this meal.
+- This applies to both logging-after-the-fact and forward-looking "what should I eat" questions.
+- The user eats a mix of eating out and home-cooked meals, so suggestions should be practical for either context (e.g., realistic swaps or modifications at a restaurant/convenience store, not just recipes).
+- The overall priority is balance — sodium and general nutrition (protein, vegetables, sugar) both matter, not sodium alone.
+- This is the default mode of operation for every meal-related response. If the user explicitly asks for an advance multi-day meal plan instead, that request can still be fulfilled separately, but it is not the default.
+
 User preference: proactive sodium coaching (confirmed with user via explicit question, 2026-08-26)
 The user explicitly said they don't want purely passive/neutral logging on sodium — they want the assistant to actively help them reduce high-sodium choices, not just note "sodium is a bit high, drink more water" every time.
 
