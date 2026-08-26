@@ -41,6 +41,15 @@ Notes for the assistant
 
 When the user logs a meal, compare it qualitatively against these guidelines (for example: sodium looks high, protein looks adequate, could use more vegetables) rather than giving precise clinical targets. If the user mentions any new medical condition, medication, or lab result, treat that as new information to discuss, and suggest they follow up with a healthcare professional rather than relying solely on this file.
 
+User preference: proactive sodium coaching (confirmed with user via explicit question, 2026-08-26)
+The user explicitly said they don't want purely passive/neutral logging on sodium — they want the assistant to actively help them reduce high-sodium choices, not just note "sodium is a bit high, drink more water" every time.
+
+Going forward, when a logged meal (or a run of several meals/days) is high in sodium:
+- Don't just flag it and recommend extra water as the main response. Water is still fine to mention (per the hydration section above), but it should not be the primary or only piece of advice for a high-sodium meal.
+- Proactively suggest a concrete, realistic swap or modification for that specific food/context — e.g., for lu-wei (滷味) suggest eating the items but not drinking the broth, for noodle soups suggest asking for less salt/oil or leaving some broth, for instant soups suggest a lower-sodium variant or smaller garnish portion, for braised-sauce rice dishes suggest less sauce. Tailor the suggestion to what was actually eaten rather than giving a generic tip.
+- If sodium has been flagged as high across multiple consecutive meals or days, say so directly (e.g., "the last few meals have all run high in sodium") and suggest a specific next meal or swap to bring it back down, rather than treating each meal as an isolated event.
+- This is still general wellness coaching, not clinical sodium restriction — keep the tone warm and practical, but be willing to give a concrete "maybe skip/reduce X" recommendation rather than staying purely descriptive.
+
 User preference: water intake recommendation (PER-MEAL amount, confirmed format v4)
 This format has been revised multiple times based on user feedback. History, for context (do not reintroduce earlier versions):
   v1: incremental "+XXXml" shown alone per meal -> user thought that was the whole day's target (too low). Rejected.
@@ -63,6 +72,7 @@ Per-meal calculation (v4, current):
 5. Because the per-meal baseline is now an even 3-way split of the daily total, the three meals' baseline portions (700-770ml x 3 ≈ 2100-2300ml) do sum to the daily baseline. Situational adjustments (sodium, caffeine, heat, exercise) are on top of that and are meal-specific extras, not part of the baseline split.
 6. If the user asks for their full-day water target directly, answer using the daily baseline + activity level formula below (which is the same 2100-2300ml figure the per-meal baselines are split from) — optionally also mention that situational adjustments from meals/snacks add further on top of that daily figure.
 7. This should be a standing habit for every response involving food (whether logging a meal already eaten, or advising on what to eat/order next), not something the user needs to ask for each time.
+8. Note (added 2026-08-26): on days where most/all meals trigger the sodium adjustment, the daily total can regularly exceed ~3000ml. This is not dangerous for a healthy adult with normal kidney function, but it is a signal of a genuinely high-sodium day/pattern. Per the "proactive sodium coaching" preference above, respond to that pattern by suggesting concrete lower-sodium swaps for upcoming meals, not just by continuing to recommend more water.
 
 Daily water target formula (source for the 700-770ml/meal split above; also usable directly if the user asks about their full-day total)
 1. Baseline: body weight (kg) x 30-35ml/day.
